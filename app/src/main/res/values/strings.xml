@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CloudRunnerAndroid</string>
+    <string name="login_button_text">Log In</string>
+    <string name="name_or_email_hint_text">name@domain.com</string>
+    <string name="password_hint_text">password</string>
+    <string name="app_icon_text">App Icon</string>
+    <string name="fetch_posts">Refresh</string>
+</resources>
