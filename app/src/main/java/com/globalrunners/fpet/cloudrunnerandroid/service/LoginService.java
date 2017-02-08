@@ -5,14 +5,15 @@ import com.globalrunners.fpet.cloudrunnerandroid.model.User;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import rx.Observable;
 
 
 public interface LoginService {
 
-    String SERVICE_ENDPOINT = "http://url.com";
+    String SERVICE_ENDPOINT = "https://vast-journey-76539.herokuapp.com";
 
-    @POST("/login")
-    Observable<User> login(@Body String user, @Body String password);
+    @GET("/login")
+    Observable<User> login(@Query("username") String username, @Query("password") String password);
 
 }

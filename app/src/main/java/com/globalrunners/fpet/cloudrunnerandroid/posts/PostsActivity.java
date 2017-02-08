@@ -15,12 +15,12 @@ import com.globalrunners.fpet.cloudrunnerandroid.adapter.CardAdapter;
 import com.globalrunners.fpet.cloudrunnerandroid.model.Post;
 import com.globalrunners.fpet.cloudrunnerandroid.singlepost.SinglePostActivity;
 
-public class PostsActivity extends AppCompatActivity implements PostsView{
+public class PostsActivity extends AppCompatActivity implements PostsView {
 
 
     private static final String TAG = "PostsActivity";
     RecyclerView mRecyclerView;
-    Button refreshButton;
+    Button mRefreshButton;
     CardAdapter mCardAdapter;
 
     PostsPresenter mPresenter;
@@ -30,22 +30,27 @@ public class PostsActivity extends AppCompatActivity implements PostsView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posts);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        initViews();
 
         mPresenter = new PostsPresenterImpl(this);
 
         mCardAdapter = new CardAdapter(mPresenter);
         mRecyclerView.setAdapter(mCardAdapter);
 
-        refreshButton = (Button) findViewById(R.id.refresh_button);
-        refreshButton.setOnClickListener(this.refreshButtonClickListener);
 
 
         mPresenter.fetchPosts();
     }
 
+    private void initViews() {
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        mRefreshButton = (Button) findViewById(R.id.refresh_button);
+        mRefreshButton.setOnClickListener(this.refreshButtonClickListener);
+
+    }
 
     private View.OnClickListener refreshButtonClickListener = new View.OnClickListener() {
         @Override
@@ -54,8 +59,6 @@ public class PostsActivity extends AppCompatActivity implements PostsView{
             mPresenter.fetchPosts();
         }
     };
-
-
 
     @Override
     public void addPost(Post post) {
@@ -74,12 +77,16 @@ public class PostsActivity extends AppCompatActivity implements PostsView{
 
     @Override
     public void goToSinglePostActivity(Post post) {
-
         Log.d(TAG, "TITLE: " + post.getTitle());
         Intent intent = new Intent(this, SinglePostActivity.class);
         intent.putExtra("post", post);
         startActivity(intent);
     }
 
+    @Override
+    public void onDestroy() {
+        mPresenter.onDestroy();
+        super.onDestroy();
+    }
 
 }

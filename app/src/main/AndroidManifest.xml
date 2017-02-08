@@ -19,8 +19,12 @@
         </activity>
         <activity
             android:name=".posts.PostsActivity"
-            android:parentActivityName=".login.LoginActivity"></activity>
-        <activity android:name=".singlepost.SinglePostActivity"></activity>
+            android:parentActivityName=".login.LoginActivity">
+
+        </activity>
+        <activity android:name=".singlepost.SinglePostActivity">
+
+        </activity>
     </application>
 
 </manifest>

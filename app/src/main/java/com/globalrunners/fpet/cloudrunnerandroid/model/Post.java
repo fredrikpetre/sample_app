@@ -6,7 +6,7 @@ import android.os.Parcelable;
 
 import java.security.Timestamp;
 
-public class Post implements Parcelable{
+public class Post implements Parcelable {
 
     private int id;
     private String timestamp;
@@ -19,13 +19,13 @@ public class Post implements Parcelable{
         this.title = title;
         this.text = text;
     }
+
     public Post(Parcel in) {
         this.id = in.readInt();
         this.title = in.readString();
         this.text = in.readString();
         this.timestamp = in.readString();
     }
-
 
     public String getTitle() {
         return title;
@@ -61,6 +61,7 @@ public class Post implements Parcelable{
         public Post createFromParcel(Parcel in) {
             return new Post(in);
         }
+
         public Post[] newArray(int size) {
             return new Post[size];
         }

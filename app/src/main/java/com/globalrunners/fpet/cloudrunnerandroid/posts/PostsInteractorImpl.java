@@ -5,9 +5,13 @@ import android.util.Log;
 import com.globalrunners.fpet.cloudrunnerandroid.model.Post;
 import com.globalrunners.fpet.cloudrunnerandroid.service.PostService;
 import com.globalrunners.fpet.cloudrunnerandroid.service.ServiceFactory;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -34,5 +38,14 @@ public class PostsInteractorImpl implements PostsInteractor {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
 
+    }
+
+    @Override
+    public Observable<String> createPost(Post post) {
+        String jsonObject = new Gson().toJson(post);
+        System.out.println(jsonObject);
+        return service.createPost(new Gson().toJson(post))
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

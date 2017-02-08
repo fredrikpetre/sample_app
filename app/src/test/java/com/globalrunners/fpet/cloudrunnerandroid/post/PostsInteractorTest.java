@@ -23,12 +23,6 @@ import rx.schedulers.Schedulers;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-//import static org.assertj.core.api.Java6Assertions.*;
-
-/**
- * Created by fpet on 08/02/2017.
- */
-
 public class PostsInteractorTest {
 
     private PostsInteractor interactor;
@@ -86,6 +80,17 @@ public class PostsInteractorTest {
         subscriber.assertValueCount(1);
         subscriber.assertCompleted();
         assertThat(subscriber.getOnNextEvents().get(0).get(0)).isNotNull();
+    }
+
+    @Test
+    public void thatCreatePostReturnsOk() throws Exception {
+        Post post = new Post(1, "test", "Title", "Text text text");
+        TestSubscriber<String> subscriber = TestSubscriber.create();
+        interactor.createPost(post).subscribe(subscriber);
+        subscriber.assertNoErrors();
+        subscriber.assertValueCount(1);
+        subscriber.assertCompleted();
+        assertThat(subscriber.getOnNextEvents().get(0)).isEqualTo("Post created");
     }
 
     @After

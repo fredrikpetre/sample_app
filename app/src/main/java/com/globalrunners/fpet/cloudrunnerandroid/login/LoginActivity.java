@@ -18,48 +18,52 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private static final String LOGIN_ERROR = "Wrong email or password";
     private static final String TAG = "Login Activity";
 
-    private EditText email;
-    private EditText password;
+    private EditText mEmail;
+    private EditText mPassword;
 
-    private Button loginButton;
+    private Button mLoginButton;
 
-    private ProgressBar progressBar;
+    private ProgressBar mProgressBar;
 
-    private LoginPresenter presenter;
+    private LoginPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        email = (EditText)findViewById(R.id.input_email_field);
-        password = (EditText)findViewById(R.id.input_password_field);
+        initViews();
 
-        loginButton = (Button)findViewById(R.id.button_login);
-        loginButton.setOnClickListener(this.loginButtonClickListener);
+        mPresenter = new LoginPresenterImpl(this);
+    }
 
-        progressBar = (ProgressBar)findViewById(R.id.progress_bar);
+    private void initViews() {
+        mEmail = (EditText) findViewById(R.id.input_email_field);
+        mPassword = (EditText) findViewById(R.id.input_password_field);
 
-        presenter = new LoginPresenterImpl(this);
+        mLoginButton = (Button) findViewById(R.id.button_login);
+        mLoginButton.setOnClickListener(this.loginButtonClickListener);
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 
     }
 
     @Override
     protected void onDestroy() {
-        presenter.onDestroy();
+        mPresenter.onDestroy();
         super.onDestroy();
     }
 
     @Override
     public void showProgress() {
         Log.d(TAG, "Show progress bar");
-        progressBar.setVisibility(View.VISIBLE);
+        mProgressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
         Log.d(TAG, "Hide progress bar");
-        progressBar.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.GONE);
 
     }
 
@@ -81,7 +85,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         @Override
         public void onClick(View view) {
             Log.d(TAG, "Login button clicked");
-            presenter.validateCredentials(email.getText().toString(), password.getText().toString());
+            mPresenter.validateCredentials(mEmail.getText().toString(), mPassword.getText().toString());
         }
     };
 }

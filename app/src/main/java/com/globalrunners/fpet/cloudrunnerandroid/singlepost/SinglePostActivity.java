@@ -23,7 +23,6 @@ public class SinglePostActivity extends AppCompatActivity implements SinglePostV
         Post post = b.getParcelable("post");
         if(post != null) {
             TextView title = (TextView)findViewById(R.id.single_post_title);
-
             title.setText(post.getTitle());
 
             TextView text = (TextView) findViewById(R.id.single_post_text);

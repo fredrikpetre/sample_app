@@ -51,7 +51,22 @@ public class PostsPresenterImpl implements PostsPresenter {
 
     @Override
     public void onItemClicked(Post post) {
-        mView.goToSinglePostActivity(post);
+        mPostsInteractor.getPost(post.getId()).subscribe(new Subscriber<Post>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                mView.showFetchError();
+            }
+
+            @Override
+            public void onNext(Post post) {
+                mView.goToSinglePostActivity(post);
+            }
+        });
     }
 
     @Override

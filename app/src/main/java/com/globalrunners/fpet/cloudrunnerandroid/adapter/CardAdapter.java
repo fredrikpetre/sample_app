@@ -1,8 +1,6 @@
 package com.globalrunners.fpet.cloudrunnerandroid.adapter;
 
 
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +10,6 @@ import android.widget.TextView;
 import com.globalrunners.fpet.cloudrunnerandroid.R;
 import com.globalrunners.fpet.cloudrunnerandroid.model.Post;
 import com.globalrunners.fpet.cloudrunnerandroid.posts.PostsPresenter;
-import com.globalrunners.fpet.cloudrunnerandroid.singlepost.SinglePostActivity;
 
 
 import java.util.ArrayList;
@@ -43,7 +40,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recycler_view, parent, false);
+                .inflate(R.layout.posts_recycler_view, parent, false);
         return new ViewHolder(v);
     }
 
