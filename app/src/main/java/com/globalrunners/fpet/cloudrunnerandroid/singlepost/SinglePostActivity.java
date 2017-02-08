@@ -1,17 +1,14 @@
 package com.globalrunners.fpet.cloudrunnerandroid.singlepost;
 
 import android.content.Intent;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.globalrunners.fpet.cloudrunnerandroid.R;
 import com.globalrunners.fpet.cloudrunnerandroid.model.Post;
 
-public class SinglePostActivity extends AppCompatActivity implements SinglePostView{
+public class SinglePostActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,7 +4,6 @@ package com.globalrunners.fpet.cloudrunnerandroid.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.security.Timestamp;
 
 public class Post implements Parcelable {
 

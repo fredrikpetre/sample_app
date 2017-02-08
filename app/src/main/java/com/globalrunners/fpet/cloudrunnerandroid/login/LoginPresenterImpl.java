@@ -4,18 +4,13 @@ package com.globalrunners.fpet.cloudrunnerandroid.login;
 import android.util.Log;
 
 import com.globalrunners.fpet.cloudrunnerandroid.model.User;
-import com.globalrunners.fpet.cloudrunnerandroid.service.LoginService;
-import com.globalrunners.fpet.cloudrunnerandroid.service.ServiceFactory;
 
-import rx.Observable;
 import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 
 public class LoginPresenterImpl implements LoginPresenter{
 
-    private static final String TAG = "Login Presenter";
+    private static final String TAG = "LoginPresenter";
 
     private LoginView mView;
     private LoginInteractor mInteractor;

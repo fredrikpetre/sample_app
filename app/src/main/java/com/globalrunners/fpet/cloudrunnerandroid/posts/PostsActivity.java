@@ -67,7 +67,7 @@ public class PostsActivity extends AppCompatActivity implements PostsView {
 
     @Override
     public void showFetchError() {
-        Toast.makeText(this, "No posts found", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.post_fetch_error, Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -15,8 +15,7 @@ import com.globalrunners.fpet.cloudrunnerandroid.posts.PostsActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
-    private static final String LOGIN_ERROR = "Wrong email or password";
-    private static final String TAG = "Login Activity";
+    private static final String TAG = "LoginActivity";
 
     private EditText mEmail;
     private EditText mPassword;
@@ -70,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void showLoginError() {
         Log.d(TAG, "Error logging in");
-        Toast.makeText(this, LOGIN_ERROR, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.login_error, Toast.LENGTH_LONG).show();
 
     }
 

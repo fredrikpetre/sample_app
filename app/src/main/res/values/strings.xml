@@ -5,4 +5,6 @@
     <string name="password_hint_text">password</string>
     <string name="app_icon_text">App Icon</string>
     <string name="fetch_posts">Refresh</string>
+    <string name="login_error">Wrong email or password</string>
+    <string name="post_fetch_error">No posts found</string>
 </resources>
